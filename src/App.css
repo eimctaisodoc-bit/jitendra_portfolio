@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+.rail:after{
+    position: absolute ;   
+    content: "";
+    top: 0; 
+    left: 0;
+    width: 3px;
+    border-radius: 9999px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(236, 9, 9, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+
+}
