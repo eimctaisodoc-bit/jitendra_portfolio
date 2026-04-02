@@ -14,10 +14,10 @@ export const FloatingMenu = () => {
     return (
         <div className="fixed top-[50%] right-4 z-50 bg-black rounded-2xl p-3 rounded-lg shadow-lg">
             {menuItems.map((item, index) => (
-                <div className="relative">
+                <div className="relative" key={`menus-${index}`}>
 
                     <a
-                        key={index}
+                        key={`_menu-${index}`}
                         href={`#${item.name.toLowerCase()}`}
                         className="flex items-center gap-2 mb-4 text-gray-300 hover:text-white transition-colors duration-300"
                     >

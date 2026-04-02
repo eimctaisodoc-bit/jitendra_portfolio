@@ -93,6 +93,7 @@ export const Footer_ = () => {
             Service Required <span className="text-red-500">*</span>
           </label>
           <select
+          
             required
             id="services"
             className="bg-transparent border-b-2 border-gray-700 py-3 focus:outline-none focus:border-[#ffde59] transition-colors appearance-none cursor-pointer"

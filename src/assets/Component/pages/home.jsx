@@ -6,8 +6,8 @@ export const Home_ = () => {
         <AnimatePresence>
 
 
-            <div className="relative mt-4">
-                <div className="lg:m-9 sm:m-5 sm:pb-4">
+            <div className="relative">
+                <div className="lg:m-3 sm:m-5 sm:pb-4">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -21,7 +21,7 @@ export const Home_ = () => {
                 </div>
                 <motion.div initial={{ scale: 0.8, opacity: 0, x: -50 }}
                     animate={{ scale: 1, opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}>
+                    transition={{ duration: 0.5, delay: 0.4 }} className="mt-8">
 
 
                     <h1 className="lg:text-7xl md:text-7xl text-6xl tracking-widest   text-white  

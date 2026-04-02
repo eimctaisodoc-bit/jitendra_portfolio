@@ -12,12 +12,13 @@ export const Audio_ = () => {
         }
     }, [])
     return (
-        <div className=" hidden">
+        <div className=" hidden" >
             <audio
                 src={AudioSrc}
                 ref={audioRef}
                 autoPlay
                 loop
+                muted
                 playsInline
                 className=""
             />
