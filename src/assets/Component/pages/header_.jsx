@@ -10,6 +10,9 @@ import { FloatingMenu } from "../helpers/floating";
 import { ExperienceCounter } from "../helpers/expirence_number";
 import { EducationSta } from "../helpers/eudcation";
 import { Testomonials } from "../helpers/testomonials";
+import { Specialize_ } from "../helpers/specialize";
+import { Skills_img } from "../helpers/skills";
+
 
 export const Header_ = () => {
   const context = useContext(MyContext);
@@ -38,7 +41,9 @@ export const Header_ = () => {
           </motion.div>
 
 
+            {/* <Skills_img key='2-7'/> */}
           <main className="flex-1 w-full px-4 py-8 mt-8 space-y-6 lg:ml-[390px] md:px-10 lg:px-16">
+       
             <Home_ />
             <div className="flex gap-16 w-full ">
               <ExperienceCounter x={-120} key='2-5' />
@@ -47,7 +52,9 @@ export const Header_ = () => {
             </div>
             <EducationSta key='2-1'/>
             <Testomonials key='2-8'/> 
+            <Specialize_/>
             <Footer_  key='2-4'/>
+            
           </main>
           <FloatingMenu />
 

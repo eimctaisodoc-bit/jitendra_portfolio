@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MessageCircle, MessageCircleCheckIcon, MessageCircleHeart, MessageSquare, MessageSquareDot, Settings } from "lucide-react";
 import { Drawer_ } from "./drawer";
-import prof from "../../../../public/profile.png";
+import prof from "../../img/profile.png";
 
 export const Aside_ = () => {
     const [open, setOpen] = useState(false);

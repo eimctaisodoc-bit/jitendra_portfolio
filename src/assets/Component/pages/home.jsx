@@ -1,6 +1,6 @@
 import { HomeIcon } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
-
+import { Pointer_ } from "../helpers/pointer"
 export const Home_ = () => {
     return (
         <AnimatePresence>
@@ -34,6 +34,7 @@ export const Home_ = () => {
                     className=" mt-9 text-lg font-serif tracking-wider text-white/80 mt-4">
                     I design and code beautifully simple things and i love what i do. Just simple like that!
                 </motion.p>
+                <Pointer_/>
             </div>
         </AnimatePresence>
     )
