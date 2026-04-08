@@ -1,39 +1,149 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MessageSquare, MoveLeft, MoveRight, Quote } from "lucide-react";
+import { MessageSquare, MoveLeft, MoveRight, Quote, Link } from "lucide-react";
 
 export const Testomonials = () => {
     const content = [
         {
-            name: "John Doe",
-            position: "CEO, Company A",
-            testimonial:
-                "Jitendra is an exceptional developer. His work on our project was outstanding and delivered ahead of schedule.",
+            name: "A.D Studio",
+            review: "यो टिमले मेरो पेज प्रोफेशनल तरिकाले ह्यान्डल गरिदियो। Boosting strategy धेरै प्रभावकारी रह्यो। Followers, likes र engagement बढेको छ। Communication clear र राम्रो छ। विश्वासनीय कम्पनी 👍",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
         },
         {
-            name: "Sarah Smith",
-            position: "Founder, Brand Studio",
-            testimonial:
-                "Professional, creative, and highly reliable. The final result exceeded our expectations in both design and performance.",
+            name: "Shree Krishna Furniture",
+            review: "धेरै भरपर्दो र इमानदार टिम। Page handling राम्रो छ र नियमित update हुन्छ। Result देखिने खालको काम गर्छ।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
         },
         {
-            name: "Michael Lee",
-            position: "Product Manager, Startup X",
-            testimonial:
-                "Very smooth collaboration from start to finish. Communication was clear, and every detail was implemented with care.",
+            name: "Sauharda Travels and Tours",
+            review: "धेरै राम्रो सेवा। Page boost genuine र प्रभावकारी लाग्यो। टिम सहयोगी र इमानदार छ। भविष्यमा पनि काम गर्नेछु 😊",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
         },
         {
-            name: "Emily Watson",
-            position: "Director, Tech Firm",
-            testimonial:
-                "One of the best developers we have worked with. Fast delivery, modern UI sense, and strong attention to detail.",
+            name: "Jangay Sarkar",
+            review: "Page verification छिटो र professional तरिकाले गरिदिनुभयो। Thank you so much 🙏",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
         },
         {
-            name: "David Clark",
-            position: "Owner, Creative Agency",
-            testimonial:
-                "The project was completed beautifully and on time. We were impressed by the code quality and polished user experience.",
+            name: "Top Durbar Rodhi Club",
+            review: "Page boosting र handling राम्रो छ। Reach र engagement राम्रोसँग बढ्यो। Support team छिटो response दिने र सहयोगी छ।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
         },
+        {
+            name: "Asian Hospitality Academy Pvt. Ltd.",
+            review: "Social media boosting र management सेवा राम्रो छ। Team मेहनती, professional र creative छ। Reach र engagement धेरै बढेको छ।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "NEB Preparation + CEE Preparation",
+            review: "We are growing good because of MediaLift Solution. Thank you to the team.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Zekey Shahs",
+            review: "Thank you MediaLift Solution for helping in our progress and digital media.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "NEB Updates and Preparation",
+            review: "Our company got best growth ever.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Lions Club & Dance Bar",
+            review: "Amazing service and best response from their team.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "New Icon Bar",
+            review: "Team professional छ र काम राम्रो तरिकाले गर्छ। Thank you.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Hatail Updates",
+            review: "Thank you team of MediaLift Solution for helping in digital media.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Blossom Beauty Parlour & Spa",
+            review: "Design, content र ads top-class छन्। Client satisfaction priority दिने company हो। 100% satisfied 👍",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Mountain Herbal Spa Pokhara",
+            review: "Affordable price मा quality service। Facebook & Instagram reach बढ्यो। Business growth का लागि best choice।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Gulf Demand",
+            review: "Brand promotion र lead generation strategy strong छ। Friendly team र clear communication।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Samridhi Photostudio",
+            review: "100% trusted company and best technical team support.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Hotel Good One Restaurant & Bar",
+            review: "From social media management to advertising, everything was handled perfectly. Business needs understood and effective solutions delivered.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Jameela Home Spa",
+            review: "Professional, responsive team focused on real results. Brand visibility has improved a lot.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Dhuwani Hamro Newa Bulero Gaadi Sewa Samparka",
+            review: "Social media handling देखि advertising सम्म सबै काम प्रभावकारी थियो। Result clearly देखियो।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Banepa Marble Place",
+            review: "Business online growth राम्रो भयो। Professional team, creative ideas र timely support। Highly recommended.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Woodland House Restro & Spa",
+            review: "100% trusted and good work. Thank you so much ❤️🙏",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Jugal Panchebaja Rodhighar",
+            review: "Support team राम्रो छ र management पनि राम्रो लाग्यो।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Creative Institute, Lagankhel",
+            review: "Facebook page and social media handling service धेरै राम्रो लाग्यो।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Royal Ice and Fire Club",
+            review: "Page promotion र handling राम्रो छ। Support team राम्रो छ।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Malangwa Party Palace & Restaurant",
+            review: "Facebook boosting राम्रो भयो। धेरै धन्यवाद।",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Ritesh Chhetri",
+            review: "Good services, thank you so much sir 🙏😊👍",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Reliant Service",
+            review: "Best boosting platform and social media handler. Thank you so much 🙏❤️",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        },
+        {
+            name: "Zekey Shah",
+            review: "We got best service from their company. Thank you media lift solution.",
+            link: "https://www.facebook.com/profile.php?id=61575612820194&sk=reviews"
+        }
     ];
 
     const [[currentIndex, direction], setCurrentIndex] = useState([0, 0]);
@@ -131,14 +241,15 @@ export const Testomonials = () => {
                                             <span className="text-lg font-bold tracking-tight text-white sm:text-xl">
                                                 {activeItem.name}
                                             </span>
-                                            <span className="text-sm font-medium text-blue-400 sm:text-base">
-                                                {activeItem.position}
-                                            </span>
+                                            <a href={activeItem.link} target="_blank" className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 transition-colors">
+                                                <Link size={14} />
+                                                View Review
+                                            </a>
                                         </div>
                                     </div>
 
                                     <p className="max-w-4xl text-base leading-8 text-gray-300 italic sm:text-lg">
-                                        “{activeItem.testimonial}”
+                                        “{activeItem.review}”
                                     </p>
                                 </div>
                             </motion.div>
@@ -166,20 +277,7 @@ export const Testomonials = () => {
                             </button>
                         </div>
 
-                        <div className="flex items-center gap-2">
-                            {content.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() =>
-                                        setCurrentIndex([index, index > currentIndex ? 1 : -1])
-                                    }
-                                    className={`h-2.5 rounded-full transition-all duration-300 ${currentIndex === index
-                                            ? "w-8 bg-[#ffde59]"
-                                            : "w-2.5 bg-white/30 hover:bg-white/50"
-                                        }`}
-                                />
-                            ))}
-                        </div>
+                       
                     </div>
                 </motion.div>
             </div>

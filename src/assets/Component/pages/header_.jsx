@@ -11,7 +11,7 @@ import { ExperienceCounter } from "../helpers/expirence_number";
 import { EducationSta } from "../helpers/eudcation";
 import { Testomonials } from "../helpers/testomonials";
 import { Specialize_ } from "../helpers/specialize";
-import { Skills_img } from "../helpers/skills";
+import { Skills_} from "../helpers/skills";
 
 
 export const Header_ = () => {
@@ -53,6 +53,7 @@ export const Header_ = () => {
             <EducationSta key='2-1'/>
             <Testomonials key='2-8'/> 
             <Specialize_/>
+            <Skills_/>
             <Footer_  key='2-4'/>
             
           </main>
