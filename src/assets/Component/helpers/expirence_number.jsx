@@ -38,7 +38,7 @@ export const ExperienceCounter = ({
 
     return (
         <>
-            <div className="my-28">
+            <div className="lg:my-28 md:my-28 my-14">
 
                 <motion.div
                     ref={ref}
@@ -48,7 +48,7 @@ export const ExperienceCounter = ({
                     transition={{ duration: 1 }}
                     className="  "
                 >
-                    <div className="text-7xl font-bold text-[#ffde59]">
+                    <div className="md:text-7xl lg:text-7xl text-5xl font-bold text-amber-500">
 
                         {display}
                         {suffix}

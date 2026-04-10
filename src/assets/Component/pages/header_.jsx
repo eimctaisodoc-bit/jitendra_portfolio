@@ -35,7 +35,7 @@ export const Header_ = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-full lg:fixed lg:left-0  lg:p-4 md:p-4 py-3 lg:top-0 lg:h-full lg:w-[390px] z-30"
+            className="w-full lg:fixed lg:left-0 flex justify-center  lg:py-0 md:py-0  py-3 sm:py-3   lg:top-0 lg:h-full lg:w-[390px] z-30"
           >
             <Aside_  key='2-6' />
           </motion.div>

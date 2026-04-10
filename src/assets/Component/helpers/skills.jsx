@@ -98,7 +98,7 @@ export const Skills_ = () => {
                     transition={{ type: "spring", stiffness: 100, damping: 20 }}
                     className="flex w-fit items-center gap-2 rounded-2xl border border-gray-700 bg-gray-900/30 px-3 py-1"
                 >
-                    <span className="text-[#ffde59]"><Sparkles size={19} /></span>
+                    <span className="text-amber-500"><Sparkles size={19} /></span>
                     <span className="text-sm text-white font-serif">Skills</span>
                 </motion.div>
 
@@ -110,7 +110,7 @@ export const Skills_ = () => {
                     transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
                     className="mt-4 max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-serif text-white"
                 >
-                    What I <span className="text-[#ffde59]">Know</span>
+                    What I <span className="text-amber-500">Know</span>
                 </motion.h2>
 
                 {/* List */}

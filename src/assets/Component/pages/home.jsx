@@ -24,7 +24,7 @@ export const Home_ = () => {
                     transition={{ duration: 0.5, delay: 0.4 }} className="mt-8">
 
 
-                    <h1 className="lg:text-7xl md:text-7xl text-6xl tracking-widest   text-white  
+                    <h1 className="lg:text-7xl md:text-7xl  text-5xl font-extrabold lg:font-normal md:font-normal sm:font-extrabold  tracking-widest   text-white  
                 font-serif">Say Hi from <br /> <span className="text-[#ffde59]">Jitendra</span> , <br /> Webflow <br /> Designer and <br /> Developer</h1>
                 </motion.div>
                 <motion.p

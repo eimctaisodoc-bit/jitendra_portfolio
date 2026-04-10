@@ -196,7 +196,7 @@ export const Testomonials = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.35 }}
-                    className="mt-4 max-w-3xl text-3xl font-serif tracking-wide text-white/90 sm:text-4xl lg:text-5xl"
+                    className="mt-4 max-w-3xl  text-3xl font-serif tracking-wide text-white/90 sm:text-4xl lg:text-5xl"
                 >
                     Trusted by <span className="text-[#ffde59]">Hundreds of Clients</span>
                 </motion.p>

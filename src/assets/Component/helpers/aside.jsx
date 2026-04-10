@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
     MessageSquareDot,
-    Settings
+    Settings,
+    Mail,
+    Phone,
+    MapPin
 } from "lucide-react";
 import { Drawer_ } from "./drawer";
 import prof from "../../img/profile.png";
@@ -10,224 +13,147 @@ import prof from "../../img/profile.png";
 export const Aside_ = () => {
     const [open, setOpen] = useState(false);
 
-    const container = {
-        hidden: {},
+    const containerVariants = {
+        hidden: { opacity: 0 },
         show: {
-            transition: {
-                staggerChildren: 0.12,
-                delayChildren: 0.15,
-            },
+            opacity: 1,
+            transition: { staggerChildren: 0.1, delayChildren: 0.2 }
         },
     };
 
-    const fadeUp = {
-        hidden: {
-            opacity: 0,
-            y: 30,
-        },
-        show: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.7,
-                ease: [0.22, 1, 0.36, 1],
-            },
-        },
-    };
-
-    const blurReveal = {
-        hidden: {
-            opacity: 0,
-            y: 20,
-            filter: "blur(12px)",
-        },
-        show: {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            transition: {
-                duration: 0.9,
-                ease: [0.22, 1, 0.36, 1],
-            },
-        },
-    };
-
-    const imagePopup = {
-        hidden: {
-            opacity: 0,
-            scale: 0.82,
-            y: 40,
-            filter: "blur(16px)",
-        },
-        show: {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            filter: "blur(0px)",
-            transition: {
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1],
-            },
-        },
+    const itemVariants = {
+        hidden: { opacity: 0, y: 15 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     };
 
     return (
         <>
             <motion.aside
-                initial={{ opacity: 0, y: 35, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-full max-w-[450px] md:max-w-[360px] 
-                lg:max-w-[350px] mx-auto min-h-[580px] md:min-h-screen border
-                 border-white/10 rounded-[28px] bg-white/5 backdrop-blur-xl 
-                shadow-[0_10px_50px_rgba(0,0,0,0.18)] overflow-hidden"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="relative w-[99%] sm:w-full max-w-[380px] mx-auto 
+                min-h-[640px] flex flex-col
+                border border-white/10 rounded-md 
+                bg-black/40 backdrop-blur-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] 
+                overflow-hidden"
             >
-                {/* soft glow */}
-                <div className="pointer-events-none absolute 
-                inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,222,89,0.18),_transparent_35%),radial-gradient(circle_at_bottom,_rgba(255,255,255,0.06),_transparent_30%)]" />
+                {/* Amber Spotlight Background Integration */}
+                <div
+                    className="absolute inset-0 z-0 pointer-events-none"
+                    style={{
+                        background: `
+                        radial-gradient(
+                          circle at center,
+                          rgba(245, 158, 11, 0.15) 0%,
+                          rgba(245, 158, 11, 0.08) 25%,
+                          rgba(0, 0, 0, 0) 70%
+                        )
+                      `,
+                    }}
+                />
 
-                {/* Settings Button */}
+                {/* Top Subtle Edge Highlight */}
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/30 to-transparent z-10" />
+
+                {/* Interactive Settings Button */}
                 <motion.button
-                    initial={{ opacity: 0, x: -20, scale: 0.8 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    transition={{ delay: 0.2, duration: 0.6 }}
+                    whileHover={{ backgroundColor: "rgba(255,255,255,0.08)", rotate: 45 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => setOpen(true)}
-                    className="absolute top-5 left-4 z-20 bg-[rgba(28,28,28,0.82)] border border-white/10 p rounded-full shadow-md hover:scale-105 transition"
+                    className="absolute top-5 right-5 z-20 p-2.5 bg-white/5 border border-white/10 rounded-md text-amber-500 transition-all cursor-pointer"
                 >
-                    <Settings
-                        className="text-white animate-spin [animation-duration:3s]"
-                        size={16}
-                    />
+                    <Settings size={18} className="animate-[spin_8s_linear_infinite]" />
                 </motion.button>
 
                 <motion.div
-                    variants={container}
+                    variants={containerVariants}
                     initial="hidden"
                     animate="show"
-                    className="relative z-10 p-5 sm:p-6 md:p-7 flex flex-col justify-between h-full gap-7"
+                    className="relative z-10 p-7 sm:p-9 flex flex-col flex-grow"
                 >
-                    {/* Profile Image */}
-                    <motion.div
-                        variants={imagePopup}
-                        className="flex justify-center pt-10 md:pt-14"
-                    >
-                        <motion.div
-                            whileHover={{ scale: 1.04, y: -4 }}
-                            transition={{ duration: 0.35 }}
-                            className="relative"
-                        >
-                            <div className="absolute inset-0 rounded-[30px] bg-[#ffde59]/20 blur-2xl scale-95" />
+                    {/* Profile Image - Sharpened & Responsive */}
+                    <motion.div variants={itemVariants} className="flex justify-center mt-4 mb-10">
+                        <div className="relative group">
+                            {/* Inner Glow */}
+                            <div className="absolute -inset-4 bg-amber-600/10 blur-3xl opacity-40 group-hover:opacity-60 transition-opacity" />
                             <img
                                 src={prof}
                                 alt="Profile"
-                                className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-52 md:h-52 object-cover rounded-[28px] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.28)]"
+                                className="relative w-48 h-48 sm:w-44 sm:h-44 object-cover rounded-md border border-white/15 shadow-2xl"
                             />
+                        </div>
+                    </motion.div>
+
+                    {/* Branding & Bio */}
+                    <div className="text-center ">
+                        <motion.div variants={itemVariants}>
+                            <h2 className="text-3xl font-extrabold text-white tracking-tight uppercase">
+                                Jitendra Singh
+                            </h2>
+                            <p className="text-base text-amber-500 font-bold tracking-[0.2em] mt-2 uppercase">
+                                Digital Creator
+                            </p>
                         </motion.div>
-                    </motion.div>
 
-                    {/* Info */}
-                    <motion.div
-                        variants={container}
-                        className="text-center font-serif text-white "
-                    >
-                        <motion.p
-                            variants={blurReveal}
-                            className="text-2xl sm:text-3xl md:text-[32px] tracking-wide font-bold leading-snug"
+                        {/* Contact Group - Enhanced Interactive Boxes */}
+                        <motion.div 
+                            variants={itemVariants}
+                            className="flex flex-col gap-3 py-4"
                         >
-                            Jitendra Singh
-                        </motion.p>
+                            {[
+                                { Icon: MapPin, text: "Lalitpur, Nepal" },
+                                { Icon: Mail, text: "jitendra@email.com", isLink: true },
+                                { Icon: Phone, text: "+977 98XXXXXXXX" }
+                            ].map((item, idx) => (
+                                <div 
+                                    key={idx}
+                                    className="flex items-center gap-4 px-2 py-1.5 bg-white/[0.03] border border-white/5 rounded-md hover:bg-white/[0.07] hover:border-white/10 transition-all duration-300 group"
+                                >
+                                    <item.Icon size={18} className="text-amber-500 group-hover:scale-110 transition-transform" />
+                                    <span className="text-[15px] sm:text-base text-white/70 group-hover:text-white transition-colors truncate">
+                                        {item.text}
+                                    </span>
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
 
-                        <motion.p
-                            variants={blurReveal}
-                            className="text-lg sm:text-xl text-white/90"
-                        >
-                           Digital Creator & Hardware Specialist
-                        </motion.p>
-
-                        <motion.p
-                            variants={blurReveal}
-                            className="text-sm sm:text-base text-white/70"
-                        >
-                            Kathmandu, Nepal
-                        </motion.p>
-                    </motion.div>
-
-                    {/* Socials */}
-                    <motion.div
-                        variants={fadeUp}
-                        className="flex flex-wrap justify-center gap-3 sm:gap-4"
-                    >
-                        {[
-                            {
-                                href: "https://www.linkedin.com/in/jitendra-singh-9b1a4b1b2/",
-                                icon: "https://cdn.simpleicons.org/linkedin/ffffff",
-                                alt: "LinkedIn",
-                            },
-                            {
-                                href: "https://github.com/",
-                                icon: "https://cdn.simpleicons.org/github/ffffff",
-                                alt: "GitHub",
-                            },
-                            {
-                                href: "https://instagram.com/",
-                                icon: "https://cdn.simpleicons.org/instagram/ffffff",
-                                alt: "Instagram",
-                            },
-                            {
-                                href: "https://twitter.com/",
-                                icon: "https://cdn.simpleicons.org/x/ffffff",
-                                alt: "Twitter/X",
-                            },
-                            {
-                                href: "https://youtube.com/",
-                                icon: "https://cdn.simpleicons.org/youtube/ffffff",
-                                alt: "YouTube",
-                            },
-                        ].map((item, index) => (
+                    {/* Social Grid */}
+                    <motion.div variants={itemVariants} className="flex justify-center gap-3 mt-2">
+                        {['linkedin', 'github', 'instagram', 'x'].map((platform) => (
                             <motion.a
-                                key={index}
-                                href={item.href}
-                                target="_blank"
-                                rel="noreferrer"
-                                initial={{ opacity: 0, y: 18, scale: 0.9 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                transition={{ delay: 0.45 + index * 0.08, duration: 0.5 }}
-                                whileHover={{ y: -4, scale: 1.08 }}
-                                whileTap={{ scale: 0.96 }}
-                                className="p-3 rounded-full bg-white/10 hover:bg-white/20 hover:border hover:border-[#ffde59] transition"
+                                key={platform}
+                                href="#"
+                                whileHover={{ y: -4, backgroundColor: "rgba(245, 158, 11, 0.1)", borderColor: "rgba(245, 158, 11, 0.4)" }}
+                                whileTap={{ scale: 0.9 }}
+                                className="w-12 h-12 flex items-center 
+                                justify-center rounded-md bg-white/5 border border-white/10 transition-all"
                             >
-                                <img
-                                    src={item.icon}
-                                    alt={item.alt}
-                                    className="w-4 h-4 sm:w-5 sm:h-5"
+                                <img 
+                                    src={`https://cdn.simpleicons.org/${platform}/ffffff`} 
+                                    className="w-5 h-5 opacity-60 group-hover:opacity-100" 
+                                    alt={platform} 
                                 />
                             </motion.a>
                         ))}
                     </motion.div>
 
-                    {/* Button */}
-                    <motion.div
-                        variants={fadeUp}
-                        className="flex justify-center"
-                    >
+                    {/* Hire Me - Massive Interactive CTA */}
+                    <motion.div variants={itemVariants} className="mt-auto pt-4 ">
                         <motion.button
-                            whileHover={{ scale: 1.04, y: -2 }}
-                            whileTap={{ scale: 0.97 }}
-                            className="px-5 sm:px-6 py-3 text-base sm:text-lg cursor-pointer flex justify-center items-center gap-2.5 bg-[#ffde59] font-serif text-[#1c1c1c] font-bold rounded-full hover:bg-[#e0c94d] transition-all duration-300 shadow-[0_12px_35px_rgba(255,222,89,0.2)]"
+                            whileHover={{ 
+                                scale: 1.02, 
+                                backgroundColor: "#fbbf24",
+                                boxShadow: "0 0 30px rgba(245, 158, 11, 0.3)"
+                            }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-2 flex justify-center items-center gap-3 
+                            bg-amber-500 text-white text-xl font-black rounded-md
+                            transition-all uppercase tracking-wider cursor-pointer"
                         >
-                            <MessageSquareDot size={21} className="text-black" />
+                            <MessageSquareDot size={24} strokeWidth={3} />
                             <span>Hire Me</span>
                         </motion.button>
-                    </motion.div>
-
-                    {/* Footer */}
-                    <motion.div
-                        variants={blurReveal}
-                        className="flex justify-center pt-1"
-                    >
-                        <p className="font-serif text-white/55 text-center text-xs sm:text-sm leading-relaxed capitalize max-w-[280px]">
-                            copyright © 2026 Jitendra Singh. All rights reserved.
-                        </p>
                     </motion.div>
                 </motion.div>
             </motion.aside>

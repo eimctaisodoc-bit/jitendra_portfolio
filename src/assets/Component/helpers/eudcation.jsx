@@ -51,8 +51,9 @@ export const EducationSta = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className=" mt-4 text-5xl font-serif tracking-wider text-white/80 ">
-                    Education & <span className="text-[#ffde59]">
+                    className=" mt-4 text-4xl  lg:text-5xl md:text-5xl  
+                    font-serif tracking-wider text-white/80 ">
+                    Education & <span className="text-amber-500">
 
                         Certificate
                     </span>
