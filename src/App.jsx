@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './App.css'
 import { Header_ } from './assets/Component/pages/header_'
-import { MyContext } from './assets/Component/hooks/context'
+import { ThemeProvider, ScrollProvider } from './assets/Component/hooks/context'
 import { BounceLoader_ } from './assets/Component/helpers/loader'
 
 function App() {
-  const [name, setname] = useState({ name: "ranjan", age: 23 })
+  // window.addEventListener('load', () => {
+  //   window.scrollBy({ top: 0, behavior: 'smooth' })
+  // })
   const [showLoader, setShowLoader] = useState(true)
-
   useEffect(() => {
     const handlePageLoad = () => {
       setTimeout(() => setShowLoader(false), 2500)
@@ -34,9 +35,11 @@ function App() {
           <BounceLoader_ />
         </motion.div>
       ) : (
-        <MyContext.Provider value={{ name, setname }}>
-          <Header_ />
-        </MyContext.Provider>
+        <ThemeProvider>
+          <ScrollProvider>
+            <Header_ />
+          </ScrollProvider>
+        </ThemeProvider>
       )}
     </AnimatePresence>
   )

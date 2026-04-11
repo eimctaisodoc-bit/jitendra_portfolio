@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import {
     MessageSquareDot,
@@ -9,9 +9,13 @@ import {
 } from "lucide-react";
 import { Drawer_ } from "./drawer";
 import prof from "../../img/profile.png";
+import { ScrollContext,  ThemeContext } from "../hooks/context";
 
 export const Aside_ = () => {
     const [open, setOpen] = useState(false);
+     const { color:{color,radial}, setColor } = useContext(ThemeContext);
+    //  console.log('from use aside ', typeof radial)
+        console.log('theme', color)
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -25,31 +29,30 @@ export const Aside_ = () => {
         hidden: { opacity: 0, y: 15 },
         show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     };
-
+    const { scrollToSection } = useContext(ScrollContext);
+    const scrollfrom = () => {
+        scrollToSection("contact", 100)
+    }
     return (
         <>
             <motion.aside
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="relative w-[99%] sm:w-full max-w-[380px] mx-auto 
+                className={`relative w-[99%] sm:w-full max-w-[380px] mx-auto 
                 min-h-[640px] flex flex-col
                 border border-white/10 rounded-md 
                 bg-black/40 backdrop-blur-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] 
-                overflow-hidden"
+                overflow-hidden`}
             >
                 {/* Amber Spotlight Background Integration */}
                 <div
                     className="absolute inset-0 z-0 pointer-events-none"
-                    style={{
-                        background: `
-                        radial-gradient(
+                   style={{ background: `radial-gradient(
                           circle at center,
                           rgba(245, 158, 11, 0.15) 0%,
                           rgba(245, 158, 11, 0.08) 25%,
                           rgba(0, 0, 0, 0) 70%
-                        )
-                      `,
-                    }}
+                        )` }}
                 />
 
                 {/* Top Subtle Edge Highlight */}
@@ -90,13 +93,13 @@ export const Aside_ = () => {
                             <h2 className="text-3xl font-extrabold text-white tracking-tight uppercase">
                                 Jitendra Singh
                             </h2>
-                            <p className="text-base text-amber-500 font-bold tracking-[0.2em] mt-2 uppercase">
+                            <p className={`text-base text-amber-500 font-bold tracking-[0.2em] mt-2 uppercase`}>
                                 Digital Creator
                             </p>
                         </motion.div>
 
                         {/* Contact Group - Enhanced Interactive Boxes */}
-                        <motion.div 
+                        <motion.div
                             variants={itemVariants}
                             className="flex flex-col gap-3 py-4"
                         >
@@ -105,7 +108,7 @@ export const Aside_ = () => {
                                 { Icon: Mail, text: "jitendra@email.com", isLink: true },
                                 { Icon: Phone, text: "+977 98XXXXXXXX" }
                             ].map((item, idx) => (
-                                <div 
+                                <div
                                     key={idx}
                                     className="flex items-center gap-4 px-2 py-1.5 bg-white/[0.03] border border-white/5 rounded-md hover:bg-white/[0.07] hover:border-white/10 transition-all duration-300 group"
                                 >
@@ -129,10 +132,10 @@ export const Aside_ = () => {
                                 className="w-12 h-12 flex items-center 
                                 justify-center rounded-md bg-white/5 border border-white/10 transition-all"
                             >
-                                <img 
-                                    src={`https://cdn.simpleicons.org/${platform}/ffffff`} 
-                                    className="w-5 h-5 opacity-60 group-hover:opacity-100" 
-                                    alt={platform} 
+                                <img
+                                    src={`https://cdn.simpleicons.org/${platform}/ffffff`}
+                                    className="w-5 h-5 opacity-60 group-hover:opacity-100"
+                                    alt={platform}
                                 />
                             </motion.a>
                         ))}
@@ -141,8 +144,13 @@ export const Aside_ = () => {
                     {/* Hire Me - Massive Interactive CTA */}
                     <motion.div variants={itemVariants} className="mt-auto pt-4 ">
                         <motion.button
-                            whileHover={{ 
-                                scale: 1.02, 
+                            onClick={scrollfrom}
+                            // onClick={()=>{
+                            //     // alert(window.innerHeight+900);
+                            //     window.scrollTo({ top: window.innerHeight+5280, behavior: 'smooth' });
+                            // }}
+                            whileHover={{
+                                scale: 1.02,
                                 backgroundColor: "#fbbf24",
                                 boxShadow: "0 0 30px rgba(245, 158, 11, 0.3)"
                             }}

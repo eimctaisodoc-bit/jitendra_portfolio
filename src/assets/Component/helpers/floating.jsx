@@ -1,7 +1,5 @@
 import React from "react";
 import { Home, User, Briefcase, Mail, Zap } from "lucide-react"; // or react-icons/fa etc
-import { div } from "framer-motion/client";
-
 export const FloatingMenu = () => {
     const menuItems = [
         { name: "Home", icon: <Home size={20} /> },
@@ -12,21 +10,33 @@ export const FloatingMenu = () => {
     ];
 
     return (
-        <div className="fixed top-[50%] right-4 z-50 bg-black rounded-2xl p-3 rounded-lg shadow-lg">
+        <div className="fixed top-[50%] right-4 z-50 bg-black rounded-2xl p-1.5 rounded-lg shadow-lg">
             {menuItems.map((item, index) => (
-                <div className="relative" key={`menus-${index}`}>
+                <div className="relative group flex items-center" key={`menu-container-${index}`}>
 
+                    {/* Tooltip Box */}
+                    <div className="absolute right-full mr-4 flex items-center opacity-0 
+                    group-hover:opacity-100 transition-opacity 
+                    duration-200 pointer-events-none">
+                        <div className="relative bg-black text-white 
+                        text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-sm whitespace-nowrap">
+                            {item.name}
+                            {/* The Arrow */}
+                            <div className="absolute top-1/2 -right-1 w-4 h-4 
+                            bg-black rotate-45 transform -translate-y-1/2" />
+                        </div>
+                    </div>
+
+                    {/* Menu Link & Icon */}
                     <a
-                        key={`_menu-${index}`}
                         href={`#${item.name.toLowerCase()}`}
-                        className="flex items-center gap-2 mb-4 text-gray-300 hover:text-white transition-colors duration-300"
+                        className="flex items-center justify-center p-2 text-gray-400 hover:text-white transition-all duration-300 ease-in-out hover:scale-110"
+                        aria-label={item.name}
                     >
-                        {item.icon}
-                        {/* <span>{item.name}</span> */}
+                        <div className="text-xl">
+                            {item.icon}
+                        </div>
                     </a>
-                    {/* <div className="absolute -left-9 top-1/2 transform
-                     -translate-y-1/2 w-9 h-3 bg-[#ffde59] rounded-full " >
-                    </div> */}
 
                 </div>
             ))}
