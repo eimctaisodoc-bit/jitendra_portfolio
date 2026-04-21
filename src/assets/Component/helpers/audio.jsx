@@ -18,7 +18,7 @@ export const Audio_ = () => {
                 ref={audioRef}
                 autoPlay
                 loop
-                muted
+               
                 playsInline
                 className=""
             />
