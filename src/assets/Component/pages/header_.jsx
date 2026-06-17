@@ -57,7 +57,7 @@ export const Header_ = () => {
             <Footer_ key='2-4' />
 
           </main>
-          <FloatingMenu />
+          {/* <FloatingMenu /> */}
 
         </header>
       </AnimatePresence>
